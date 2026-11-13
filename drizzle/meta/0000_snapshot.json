@@ -1,0 +1,342 @@
+{
+  "id": "8378e1f3-846d-42e0-a132-46c29293a858",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.events": {
+      "name": "events",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "jenis": {
+          "name": "jenis",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "player_id": {
+          "name": "player_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data": {
+          "name": "data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dibuat_pada": {
+          "name": "dibuat_pada",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "events_jenis_waktu_idx": {
+          "name": "events_jenis_waktu_idx",
+          "columns": [
+            {
+              "expression": "jenis",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "dibuat_pada",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "events_player_id_players_id_fk": {
+          "name": "events_player_id_players_id_fk",
+          "tableFrom": "events",
+          "tableTo": "players",
+          "columnsFrom": [
+            "player_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.friend_responses": {
+      "name": "friend_responses",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "player_id": {
+          "name": "player_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pilihan_varian": {
+          "name": "pilihan_varian",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_kalimat": {
+          "name": "id_kalimat",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nama_teman": {
+          "name": "nama_teman",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sidik_perangkat": {
+          "name": "sidik_perangkat",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dibuat_pada": {
+          "name": "dibuat_pada",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "friend_responses_satu_perangkat": {
+          "name": "friend_responses_satu_perangkat",
+          "columns": [
+            {
+              "expression": "player_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "sidik_perangkat",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "friend_responses_player_idx": {
+          "name": "friend_responses_player_idx",
+          "columns": [
+            {
+              "expression": "player_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "friend_responses_player_id_players_id_fk": {
+          "name": "friend_responses_player_id_players_id_fk",
+          "tableFrom": "friend_responses",
+          "tableTo": "players",
+          "columnsFrom": [
+            "player_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.players": {
+      "name": "players",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "kode_publik": {
+          "name": "kode_publik",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "token_rahasia": {
+          "name": "token_rahasia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nama_panggilan": {
+          "name": "nama_panggilan",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "jawaban": {
+          "name": "jawaban",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "skor_sendiri": {
+          "name": "skor_sendiri",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "src": {
+          "name": "src",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kode_pengajak": {
+          "name": "kode_pengajak",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "no_whatsapp": {
+          "name": "no_whatsapp",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "setuju_dihubungi": {
+          "name": "setuju_dihubungi",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "sidik_pembuat": {
+          "name": "sidik_pembuat",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dibuat_pada": {
+          "name": "dibuat_pada",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "players_kode_publik_unik": {
+          "name": "players_kode_publik_unik",
+          "columns": [
+            {
+              "expression": "kode_publik",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "players_token_rahasia_unik": {
+          "name": "players_token_rahasia_unik",
+          "columns": [
+            {
+              "expression": "token_rahasia",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "players_dibuat_pada_idx": {
+          "name": "players_dibuat_pada_idx",
+          "columns": [
+            {
+              "expression": "dibuat_pada",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

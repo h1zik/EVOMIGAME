@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/*
+ * Design token EVOMI.
+ * Semua warna hidup di sini sebagai CSS variables. Komponen tidak menulis hex.
+ * Warna varian (--v-{id} dan --v-{id}-muda) dibuat otomatis dari content/varian.ts
+ * dan disisipkan di layout.
+ */
+:root {
+  --biru: #1172ba;
+  --biru-tua: #08324f;
+  --putih: #ffffff;
+  --teks: #0f172a;
+  --shopee: #ee4d2d;
+
+  /* Turunan terang dari biru brand, untuk latar lembut dan garis halus. */
+  --biru-langit: #3e97d6;
+  --biru-muda: #e8f3fb;
+  --biru-garis: #cfe3f3;
+  /* Teks sekunder di atas putih: biru tua yang diencerkan, tetap lolos AA. */
+  --teks-redup: #3d5a70;
+
+  --sudut-kartu: 24px;
+  --fokus: var(--putih);
+}
+
+@theme inline {
+  --color-biru: var(--biru);
+  --color-biru-tua: var(--biru-tua);
+  --color-biru-langit: var(--biru-langit);
+  --color-biru-muda: var(--biru-muda);
+  --color-biru-garis: var(--biru-garis);
+  --color-putih: var(--putih);
+  --color-teks: var(--teks);
+  --color-teks-redup: var(--teks-redup);
+  --color-shopee: var(--shopee);
+  /* Warna varian aktif. Diisi lewat style pada elemen pembungkus. */
+  --color-v: var(--v);
+  --color-v-muda: var(--v-muda);
+
+  --font-sans: var(--font-nohemi), ui-sans-serif, system-ui, sans-serif;
+  --radius-kartu: var(--sudut-kartu);
+}
+
+html {
+  background: var(--biru);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--biru);
+  color: var(--putih);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Fokus keyboard selalu terlihat. Di atas putih, warnanya berganti ke biru tua.
+ * Judul yang difokuskan lewat kode (tabindex -1) tidak diberi garis, karena bukan kontrol.
+ */
+:focus-visible:not([tabindex="-1"]) {
+  outline: 3px solid var(--fokus);
+  outline-offset: 3px;
+}
+[tabindex="-1"]:focus {
+  outline: none;
+}
+.di-atas-putih {
+  --fokus: var(--biru-tua);
+}
+
+/* Latar seperti langit: lebih terang di atas tengah, kembali ke biru brand. */
+.langit {
+  background: radial-gradient(
+    120% 70% at 50% 0%,
+    var(--biru-langit) 0%,
+    var(--biru) 62%
+  );
+}
+
+/* Label kecil: kapital, 600, jarak antarhuruf lebar. */
+.label-kecil {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Gerak ringan. Semuanya dimatikan untuk prefers-reduced-motion di bawah. */
+@keyframes tumbuh {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes membesar {
+  from {
+    width: 25%;
+  }
+}
+@keyframes geser-masuk {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+.anim-tumbuh {
+  transform-origin: left center;
+  animation: tumbuh 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.anim-membesar {
+  animation: membesar 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.anim-geser {
+  animation: geser-masuk 0.28s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-tumbuh,
+  .anim-membesar,
+  .anim-geser {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
