@@ -26,10 +26,10 @@ export const KARTU_BELANJA: KartuSituasi[] = [
     id: "bl03",
     situasi: "Kasir kasih kembalian kelebihan. Kamu...",
     pilihan: {
-      PP: "Balikin, hitung ulang bareng",
+      PP: "Hitung ulang di depan kasir",
       PC: "Balikin sambil senyum",
       RB: '"Kak, ini kelebihan"',
-      SS: "Balikin, takut dia kena tegur",
+      SS: "Balik lagi walau udah jauh, kasihan kasirnya",
     },
   },
   {
@@ -116,10 +116,10 @@ export const KARTU_BELANJA: KartuSituasi[] = [
     id: "bl12",
     situasi: "Temanmu jualan dan nawarin ke kamu. Kamu...",
     pilihan: {
-      PP: "Beli kalau memang perlu",
+      PP: "Beli kalau memang perlu, kalau nggak ya nggak",
       PC: "Beli satu buat dukung",
-      RB: "Beli, sekalian promosiin",
-      SS: "Beli banyak, nggak enak nolak",
+      RB: "Bilang lagi nggak butuh, tapi bantu sebarin",
+      SS: "Nggak enak nolak, akhirnya beli",
     },
   },
   {
@@ -128,7 +128,7 @@ export const KARTU_BELANJA: KartuSituasi[] = [
     pilihan: {
       PP: "Bikin tabel, isi tiap hari",
       PC: "Ikut semampunya",
-      RB: "Pasang target dua kali lipat",
+      RB: "Nggak ikut, uangnya buat pengalaman",
       SS: "Ikut bareng teman biar semangat",
     },
   },
@@ -136,10 +136,10 @@ export const KARTU_BELANJA: KartuSituasi[] = [
     id: "bl14",
     situasi: "Belanja baju, pilihannya tinggal dua. Kamu...",
     pilihan: {
-      PP: "Pilih yang paling sering bisa dipakai",
-      PC: "Pilih yang paling nyaman",
-      RB: "Pilih yang paling mencolok",
-      SS: "Pilih yang dibilang bagus sama teman",
+      PP: "Yang paling sering bisa dipakai",
+      PC: "Ambil yang paling nyaman",
+      RB: "Dua-duanya, urusan nanti",
+      SS: "Tanya teman, bagus yang mana",
     },
   },
   {
@@ -208,7 +208,7 @@ export const KARTU_BELANJA: KartuSituasi[] = [
     pilihan: {
       PP: "Tanya daftarnya, atur urutan toko",
       PC: "Temenin, duduk kalau capek",
-      RB: "Ikut milih yang berani-berani",
+      RB: "Bilang jujur, kuatnya cuma dua jam",
       SS: "Bawain tasnya, kasih pendapat",
     },
   },
@@ -216,9 +216,9 @@ export const KARTU_BELANJA: KartuSituasi[] = [
     id: "bl22",
     situasi: "Ada undian berhadiah. Kamu...",
     pilihan: {
-      PP: "Ikut kalau syaratnya jelas",
+      PP: "Nggak ikut, peluangnya kecil",
       PC: "Ikut, nggak berharap",
-      RB: "Ikut semuanya",
+      RB: "Borong kuponnya",
       SS: "Ikut, udah bayangin menangnya",
     },
   },

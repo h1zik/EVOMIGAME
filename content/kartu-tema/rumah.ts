@@ -27,9 +27,9 @@ export const KARTU_RUMAH: KartuSituasi[] = [
     situasi: "Cucian numpuk. Kamu...",
     pilihan: {
       PP: "Cuci sesuai jadwal tetap",
-      PC: "Cuci kalau cuacanya cerah",
+      PC: "Besok aja, bajunya masih ada",
       RB: "Cuci semua sekaligus",
-      SS: "Cuci sambil dengerin lagu",
+      SS: "Titip ke penatu aja",
     },
   },
   {
@@ -147,9 +147,9 @@ export const KARTU_RUMAH: KartuSituasi[] = [
     situasi: "Sudah tanggalnya bayar sewa. Kamu...",
     pilihan: {
       PP: "Bayar sebelum jatuh tempo",
-      PC: "Bayar pas harinya",
+      PC: "Pas harinya, santai",
       RB: "Sekalian minta perbaikan kamar",
-      SS: "Bayar, titip salam",
+      SS: "Hampir lupa, untung diingatkan teman",
     },
   },
   {
@@ -157,8 +157,8 @@ export const KARTU_RUMAH: KartuSituasi[] = [
     situasi: "Ada rapat penghuni. Kamu...",
     pilihan: {
       PP: "Datang, bawa catatan",
-      PC: "Datang, dengerin",
-      RB: "Usul perubahan",
+      PC: "Nggak datang, baca hasilnya di grup",
+      RB: "Usul perubahan di depan semua",
       SS: "Datang, bawa camilan",
     },
   },
@@ -167,9 +167,9 @@ export const KARTU_RUMAH: KartuSituasi[] = [
     situasi: "Kamu mau beli perabot baru. Kamu...",
     pilihan: {
       PP: "Ukur dulu ruangannya",
-      PC: "Pilih yang empuk",
+      PC: "Cari yang empuk",
       RB: "Pilih yang warnanya mencolok",
-      SS: "Pilih yang lucu",
+      SS: "Ambil yang lucu",
     },
   },
   {
@@ -186,10 +186,10 @@ export const KARTU_RUMAH: KartuSituasi[] = [
     id: "ks19",
     situasi: "Tetangga minta tolong jagain hewan peliharaannya. Kamu...",
     pilihan: {
-      PP: "Tanya jadwal makannya",
-      PC: "Temenin dia seharian",
-      RB: "Ajak main terus",
-      SS: "Sayang-sayang, nggak mau balikin",
+      PP: "Tolak kalau jadwal padat, daripada telantar",
+      PC: "Mau, temenin dia seharian",
+      RB: "Mau, ajak main terus",
+      SS: "Sayang-sayang sampai nggak mau balikin",
     },
   },
   {

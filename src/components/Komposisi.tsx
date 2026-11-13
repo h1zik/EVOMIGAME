@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { DAFTAR_VARIAN } from "@content/varian";
 import { BatangPersen } from "./BatangPersen";
 import { Maskot } from "./Maskot";
@@ -25,14 +26,19 @@ export function Komposisi({ persen, ringkas = false }: { persen: Persen; ringkas
         role="img"
         aria-label={DAFTAR_VARIAN.map((v) => `${v.namaTampil} ${persen[v.id] ?? 0} persen`).join(", ")}
       >
-        {DAFTAR_VARIAN.map((v) => (
+        {DAFTAR_VARIAN.map((v, i) => (
           <Maskot
             key={v.id}
             varian={v}
             hias
             berdiri
-            className="anim-membesar h-auto px-1"
-            style={{ width: `${dasar + (persen[v.id] ?? 0) * perPersen}%` }}
+            className="anim-maskot-masuk h-auto px-1"
+            style={
+              {
+                width: `${dasar + (persen[v.id] ?? 0) * perPersen}%`,
+                "--tunda": `${i * 110}ms`,
+              } as CSSProperties
+            }
           />
         ))}
       </div>

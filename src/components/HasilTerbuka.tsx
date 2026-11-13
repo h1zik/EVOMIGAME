@@ -36,9 +36,17 @@ export function HasilTerbuka({
   return (
     <>
       {/* Sorotan utama. Tetap satu kalimat, tidak menyebut pemain sebagai satu varian. */}
-      <Kartu>
+      <Kartu className="anim-muncul">
         <div className="flex items-center gap-4">
-          {varianSorotan ? <Maskot varian={varianSorotan} ukuran={76} hias className="shrink-0" /> : null}
+          {varianSorotan ? (
+            <Maskot
+              varian={varianSorotan}
+              ukuran={76}
+              hias
+              className="anim-lompat-dua shrink-0"
+              style={{ "--tunda": "500ms" } as CSSProperties}
+            />
+          ) : null}
           <p className="text-[1.3125rem] leading-snug font-bold text-pretty">{ringkasan.kalimatSorotan}</p>
         </div>
       </Kartu>

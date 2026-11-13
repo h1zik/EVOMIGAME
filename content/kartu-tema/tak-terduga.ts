@@ -37,7 +37,7 @@ export const KARTU_TAK_TERDUGA: KartuSituasi[] = [
     situasi: "Kamu kepeleset di depan banyak orang. Kamu...",
     pilihan: {
       PP: "Bangun, cek ada yang luka nggak",
-      PC: "Bangun pelan, senyum",
+      PC: "Pelan-pelan berdiri, senyum",
       RB: "Bangun, angkat tangan gaya",
       SS: "Malu, buru-buru pergi",
     },
@@ -139,7 +139,7 @@ export const KARTU_TAK_TERDUGA: KartuSituasi[] = [
       PP: "Minta semenit buat siap",
       PC: "Maju dengan tenang",
       RB: "Maju, karang sambil jalan",
-      SS: "Maju, tangan dingin",
+      SS: "Minta ditemani teman ke depan",
     },
   },
   {

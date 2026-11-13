@@ -2,6 +2,11 @@
 export const PENGATURAN = {
   /** Jumlah kartu situasi yang dijawab pemain tiap sesi. */
   jumlahKartu: 5,
+  /**
+   * Berapa kali pemain boleh menukar kartu yang jawabannya tidak ada yang cocok.
+   * Isi 0 untuk mematikan tombol "Ganti kartu".
+   */
+  maksGantiKartu: 3,
   /** Jumlah respons teman sebelum "versi kata teman" terbuka. */
   ambangBuka: 3,
   /** Batas respons teman per pemain. */

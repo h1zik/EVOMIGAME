@@ -70,6 +70,18 @@ export function lupakanHasil(token: string) {
   }
 }
 
+/**
+ * Menandai bahwa pemain baru saja selesai menjawab kartu, supaya halaman hasil
+ * memutar perayaan satu kali (lihat src/components/Perayaan.tsx).
+ */
+export function tandaiRayakan(token: string) {
+  try {
+    window.sessionStorage.setItem("vkk_rayakan", token);
+  } catch {
+    // Tanpa penanda, halaman hasil tetap tampil, hanya tanpa perayaan.
+  }
+}
+
 const AWALAN_ISI = "vkk_isi_";
 
 /** Menandai bahwa perangkat ini sudah mengisi untuk pemain dengan kode tersebut. */

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { DAFTAR_KALIMAT } from "./kalimat";
+import { DAFTAR_GAYA, DAFTAR_KALIMAT, kalimatUntukKode } from "./kalimat";
 import { DAFTAR_KARTU } from "./kartu";
 import { PENGATURAN } from "./pengaturan";
 import { DAFTAR_VARIAN } from "./varian";
@@ -49,6 +49,24 @@ describe("kartu situasi", () => {
     }
   });
 
+  it("paling banyak dua pilihan dalam satu kartu diawali kata yang sama", () => {
+    // Kalau tiga atau empat jawaban diawali kata yang sama ("Ikut...", "Beli...", "Datang..."),
+    // biasanya tindakannya sama dan cuma alasannya yang beda, jadi pemain tidak benar-benar memilih.
+    // Untuk kartu berisi ajakan atau permintaan, pastikan juga ada pilihan untuk yang mau menolak.
+    const kataAwal = (teks: string) =>
+      teks
+        .toLowerCase()
+        .replace(/^["']+/, "")
+        .split(/[\s,.!?"]+/)
+        .filter(Boolean)[0] ?? "";
+    for (const k of DAFTAR_KARTU) {
+      const hitung = new Map<string, number>();
+      for (const teks of Object.values(k.pilihan)) hitung.set(kataAwal(teks), (hitung.get(kataAwal(teks)) ?? 0) + 1);
+      const terbanyak = [...hitung.entries()].sort((a, b) => b[1] - a[1])[0];
+      expect(terbanyak[1], `${k.id}: "${terbanyak[0]}" dipakai ${terbanyak[1]} kali`).toBeLessThanOrEqual(2);
+    }
+  });
+
   it("teks kartu tidak menyebut nama varian, supaya labelnya tidak bocor ke pemain", () => {
     for (const k of DAFTAR_KARTU) {
       const semua = [k.situasi, ...Object.values(k.pilihan)].join(" ").toLowerCase();
@@ -80,9 +98,28 @@ describe("aturan penulisan", () => {
     for (const teks of semuaTeks) expect(/\btipe\b|kepribadian/i.test(teks), teks).toBe(false);
   });
 
-  it("tiap varian punya kalimat validasi", () => {
+  it("tiap varian punya 3 kalimat validasi untuk tiap gaya", () => {
+    // Halaman teman menampilkan kalimat dari 2 versi, jadi 3 per versi berarti 6 pilihan.
     for (const kode of KODE) {
-      expect(DAFTAR_KALIMAT.filter((k) => k.kode === kode).length, kode).toBeGreaterThanOrEqual(1);
+      for (const gaya of DAFTAR_GAYA) {
+        expect(kalimatUntukKode(kode, gaya).length, `${kode} ${gaya}`).toBe(3);
+      }
     }
+  });
+
+  it("id dan teks kalimat validasi tidak ada yang kembar", () => {
+    expect(new Set(DAFTAR_KALIMAT.map((k) => k.id)).size).toBe(DAFTAR_KALIMAT.length);
+    expect(new Set(DAFTAR_KALIMAT.map((k) => k.teks)).size).toBe(DAFTAR_KALIMAT.length);
+  });
+
+  it("id kalimat dari panduan tetap ada, karena sudah tersimpan di database", () => {
+    const id = new Set(DAFTAR_KALIMAT.map((k) => k.id));
+    for (const lama of ["PP1", "PP2", "PP3", "PC1", "PC2", "PC3", "RB1", "RB2", "RB3", "SS1", "SS2", "SS3"]) {
+      expect(id.has(lama), lama).toBe(true);
+    }
+  });
+
+  it("kalimat validasi cukup pendek untuk balon obrolan", () => {
+    for (const k of DAFTAR_KALIMAT) expect(k.teks.length, k.id).toBeLessThanOrEqual(60);
   });
 });

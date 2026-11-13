@@ -56,10 +56,10 @@ export const KARTU_GAYA: KartuSituasi[] = [
     id: "gy06",
     situasi: "Pilih warna baju buat hari ini. Kamu...",
     pilihan: {
-      PP: "Warna gelap yang rapi",
+      PP: "Gelap dan rapi",
       PC: "Warna kalem",
-      RB: "Warna paling terang",
-      SS: "Warna pastel",
+      RB: "Paling terang",
+      SS: "Pastel",
     },
   },
   {
@@ -79,7 +79,7 @@ export const KARTU_GAYA: KartuSituasi[] = [
       PP: "Tanya dulu konsepnya",
       PC: "Gaya natural aja",
       RB: "Pose total",
-      SS: "Malu, tapi mau",
+      SS: "Nolak, malu difoto",
     },
   },
   {
@@ -97,8 +97,8 @@ export const KARTU_GAYA: KartuSituasi[] = [
     situasi: "Disuruh pakai seragam yang nggak kamu suka. Kamu...",
     pilihan: {
       PP: "Pakai dengan rapi",
-      PC: "Pakai aja",
-      RB: "Tambah sentuhan sendiri",
+      PC: "Ya sudah, cuma sehari",
+      RB: "Tanya, boleh nggak pakai yang lain",
       SS: "Pakai, tambah pin kecil",
     },
   },
@@ -198,8 +198,8 @@ export const KARTU_GAYA: KartuSituasi[] = [
     pilihan: {
       PP: "Yang banyak sekatnya",
       PC: "Tas kain",
-      RB: "Yang warnanya mencolok",
-      SS: "Yang kecil dan lucu",
+      RB: "Warnanya paling mencolok",
+      SS: "Kecil dan lucu",
     },
   },
   {

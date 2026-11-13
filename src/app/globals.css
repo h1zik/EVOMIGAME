@@ -117,11 +117,132 @@ body {
   animation: geser-masuk 0.28s ease-out both;
 }
 
+/*
+ * Gerak maskot. Semua memakai transform dan opacity saja supaya ringan di HP.
+ * Jeda antar maskot diatur lewat --tunda pada elemennya.
+ */
+@keyframes lompat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  15% {
+    transform: translateY(0) scale(1.07, 0.9);
+  }
+  45% {
+    transform: translateY(-24%) scale(0.96, 1.05);
+  }
+  75% {
+    transform: translateY(0) scale(1.05, 0.93);
+  }
+}
+@keyframes muncul-pegas {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  80% {
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes melayang {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7%) rotate(-2deg);
+  }
+}
+@keyframes denyut {
+  50% {
+    transform: scale(1.03);
+  }
+}
+@keyframes konfeti-jatuh {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -14vh, 0) rotate(0deg);
+  }
+  8% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--geser, 0), 108vh, 0) rotate(var(--putar, 360deg));
+  }
+}
+
+/* Melompat terus, bergantian. Dipakai saat menunggu jawaban disimpan. */
+.anim-lompat {
+  transform-origin: 50% 100%;
+  animation: lompat 0.9s ease-in-out infinite;
+  animation-delay: var(--tunda, 0ms);
+}
+/* Melompat satu kali, sebagai tanggapan atas pilihan. */
+.anim-lompat-sekali {
+  transform-origin: 50% 100%;
+  animation: lompat 0.6s ease-out 1 both;
+  animation-delay: var(--tunda, 0ms);
+}
+/* Melompat dua kali saat layar dibuka. */
+.anim-lompat-dua {
+  transform-origin: 50% 100%;
+  animation: lompat 0.7s ease-in-out 2 both;
+  animation-delay: var(--tunda, 0ms);
+}
+/* Muncul dengan sedikit memantul. */
+.anim-muncul {
+  animation: muncul-pegas 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  animation-delay: var(--tunda, 0ms);
+}
+/* Naik turun pelan saat diam. */
+.anim-melayang {
+  animation: melayang 3.4s ease-in-out infinite;
+  animation-delay: var(--tunda, 0ms);
+}
+.anim-denyut {
+  animation: denyut 0.22s ease-out;
+}
+/* Maskot di komposisi: membesar ke ukurannya, lalu melompat sekali. */
+.anim-maskot-masuk {
+  transform-origin: 50% 100%;
+  animation:
+    membesar 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both,
+    lompat 0.65s ease-out 1 both;
+  animation-delay: var(--tunda, 0ms), calc(var(--tunda, 0ms) + 760ms);
+}
+/* Satu keping hujan maskot (lihat src/components/Perayaan.tsx). */
+.konfeti-keping {
+  position: absolute;
+  top: 0;
+  left: var(--kiri, 50%);
+  width: var(--ukuran, 28px);
+  height: auto;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: konfeti-jatuh var(--lama, 2400ms) cubic-bezier(0.3, 0.2, 0.6, 1) both;
+  animation-delay: var(--tunda, 0ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .anim-tumbuh,
-  .anim-membesar,
-  .anim-geser {
-    animation: none;
+  [class*="anim-"],
+  .konfeti-keping {
+    animation: none !important;
+  }
+  .konfeti {
+    display: none;
   }
   * {
     transition-duration: 0.01ms !important;

@@ -109,7 +109,7 @@ export const KARTU_MAKAN: KartuSituasi[] = [
       PP: "Tanya dulu isinya apa",
       PC: "Coba dikit dulu",
       RB: "Langsung suap besar",
-      SS: "Coba kalau ada yang nemenin",
+      SS: "Nggak berani, lihat yang lain dulu",
     },
   },
   {

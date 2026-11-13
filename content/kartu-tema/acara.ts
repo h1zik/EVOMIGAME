@@ -6,10 +6,10 @@ export const KARTU_ACARA: KartuSituasi[] = [
     id: "ac01",
     situasi: "Diundang ke pesta, tapi kamu nggak kenal banyak orang. Kamu...",
     pilihan: {
-      PP: "Datang, sapa tuan rumah dulu",
-      PC: "Datang sebentar",
+      PP: "Datang sebentar, sapa tuan rumah, pulang",
+      PC: "Nggak datang, titip ucapan aja",
       RB: "Datang, kenalan sama semua",
-      SS: "Datang kalau ada teman",
+      SS: "Ikut kalau ada teman, kalau nggak ya nggak",
     },
   },
   {
@@ -19,7 +19,7 @@ export const KARTU_ACARA: KartuSituasi[] = [
       PP: "Minta susunan acaranya dulu",
       PC: "Bawain dengan santai",
       RB: "Langsung naik panggung",
-      SS: "Mau, asal berdua",
+      SS: "Nolak, takut salah ngomong",
     },
   },
   {
@@ -28,8 +28,8 @@ export const KARTU_ACARA: KartuSituasi[] = [
     pilihan: {
       PP: "Rapi dan pas",
       PC: "Yang paling nyaman",
-      RB: "Yang paling beda",
-      SS: "Yang warnanya lembut",
+      RB: "Paling beda dari yang lain",
+      SS: "Warna lembut, ada detail lucunya",
     },
   },
   {
@@ -97,7 +97,7 @@ export const KARTU_ACARA: KartuSituasi[] = [
     situasi: "Kamu diminta kasih sambutan singkat. Kamu...",
     pilihan: {
       PP: "Tiga poin, selesai",
-      PC: "Bicara pelan dan hangat",
+      PC: "Oper ke yang lebih pantas, sambil senyum",
       RB: "Bicara tanpa teks",
       SS: "Suara gemetar, tapi tulus",
     },

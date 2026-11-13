@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
-import { kalimatUntukKode } from "@content/kalimat";
+import { DAFTAR_GAYA, kalimatUntukKode, type GayaKalimat } from "@content/kalimat";
 import { PENGATURAN } from "@content/pengaturan";
 import { isi, TEKS } from "@content/teks";
 import { DAFTAR_VARIAN, type Varian } from "@content/varian";
@@ -34,6 +34,7 @@ export function AlurTeman({ kode, nama }: { kode: string; nama: string }) {
   const [layar, setLayar] = useState<Layar>("memuat");
   const [pilihan, setPilihan] = useState<string[]>([]);
   const [idKalimat, setIdKalimat] = useState<string | null>(null);
+  const [gaya, setGaya] = useState<GayaKalimat>(DAFTAR_GAYA[0]);
   const [namaTeman, setNamaTeman] = useState("");
   const [tokenSendiri, setTokenSendiri] = useState<string | null>(null);
   const [mengirim, setMengirim] = useState(false);
@@ -74,6 +75,13 @@ export function AlurTeman({ kode, nama }: { kode: string; nama: string }) {
       if (lama.length >= butuh) return lama;
       return [...lama, id];
     });
+  }
+
+  /** Ganti gaya kalimat. Pilihan kalimat dikosongkan supaya yang terkirim selalu yang sedang terlihat. */
+  function gantiGaya(baru: GayaKalimat) {
+    if (baru === gaya) return;
+    setGaya(baru);
+    setIdKalimat(null);
   }
 
   function keKalimat() {
@@ -184,7 +192,7 @@ export function AlurTeman({ kode, nama }: { kode: string; nama: string }) {
                     aktif ? "border-v bg-v-muda" : "border-biru-garis bg-putih"
                   } ${terkunci ? "opacity-50" : ""}`}
                 >
-                  <Maskot varian={v} ukuran={56} hias className="shrink-0" />
+                  <Maskot varian={v} ukuran={56} hias className={`shrink-0 ${aktif ? "anim-lompat-sekali" : ""}`} />
                   <span className="min-w-0 flex-1">
                     <span className="block text-lg leading-tight font-bold">{v.namaTampil}</span>
                     <span className="mt-0.5 block leading-snug text-teks-redup">{v.deskripsiSingkat}</span>
@@ -231,7 +239,33 @@ export function AlurTeman({ kode, nama }: { kode: string; nama: string }) {
         </h1>
 
         <Kartu className="mt-5">
-          <div className="grid gap-5">
+          {/*
+            Pilihan gaya kalimat. Teman memilih sendiri yang cocok dengan kedekatannya,
+            jadi game tidak perlu menanyakan jenis kelamin.
+          */}
+          <div role="group" aria-label={TEKS.teman.gaya.label} className="flex rounded-full bg-biru-muda p-1">
+            {DAFTAR_GAYA.map((g) => {
+              const aktif = gaya === g;
+              return (
+                <button
+                  key={g}
+                  type="button"
+                  onClick={() => gantiGaya(g)}
+                  aria-pressed={aktif}
+                  className={`min-h-11 flex-1 rounded-full px-4 font-bold transition-colors duration-150 ${
+                    aktif ? "bg-biru text-putih" : "text-biru"
+                  }`}
+                >
+                  {TEKS.teman.gaya[g]}
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-center text-teks-redup" aria-live="polite">
+            {gaya === "santai" ? TEKS.teman.gaya.ketSantai : TEKS.teman.gaya.ketHangat}
+          </p>
+
+          <div className="mt-5 grid gap-5">
             {varianTerpilih.map((v) => (
               <div key={v.id} style={warnaVarian(v)}>
                 <p className="flex items-center gap-2 font-bold">
@@ -239,7 +273,7 @@ export function AlurTeman({ kode, nama }: { kode: string; nama: string }) {
                   {v.namaTampil}
                 </p>
                 <ul className="mt-2 grid gap-2">
-                  {kalimatUntukKode(v.kode).map((k) => {
+                  {kalimatUntukKode(v.kode, gaya).map((k) => {
                     const aktif = idKalimat === k.id;
                     return (
                       <li key={k.id}>

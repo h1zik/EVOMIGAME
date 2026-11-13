@@ -136,10 +136,10 @@ export const KARTU_PERASAAN: KartuSituasi[] = [
     id: "gb14",
     situasi: "Kamu mau kasih kado buat dia. Kamu...",
     pilihan: {
-      PP: "Sesuatu yang memang dia butuh",
+      PP: "Barang yang memang dia butuh",
       PC: "Sesuatu yang bikin dia nyaman",
-      RB: "Sesuatu yang nggak dia sangka",
-      SS: "Sesuatu buatan tangan sendiri",
+      RB: "Kejutan yang nggak dia sangka",
+      SS: "Buatan tangan sendiri",
     },
   },
   {
@@ -149,7 +149,7 @@ export const KARTU_PERASAAN: KartuSituasi[] = [
       PP: "Siapin diri, tanya apa yang perlu dibawa",
       PC: "Datang apa adanya, sopan",
       RB: "Siap, sekalian kenalan",
-      SS: "Gugup dari seminggu sebelumnya",
+      SS: "Minta waktu, belum siap",
     },
   },
   {

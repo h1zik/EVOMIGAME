@@ -106,10 +106,10 @@ export const KARTU_MEDIA_SOSIAL: KartuSituasi[] = [
     id: "ms11",
     situasi: "Teman kirim pesan suara lima menit. Kamu...",
     pilihan: {
-      PP: "Dengerin dengan kecepatan dua kali",
+      PP: "Putar dengan kecepatan dua kali",
       PC: "Dengerin sambil rebahan",
       RB: 'Balas, "intinya apa?"',
-      SS: "Dengerin sampai habis, balas panjang",
+      SS: "Simak sampai habis, balas panjang",
     },
   },
   {
@@ -157,9 +157,9 @@ export const KARTU_MEDIA_SOSIAL: KartuSituasi[] = [
     situasi: "Kenalan baru minta ikuti akun pribadimu. Kamu...",
     pilihan: {
       PP: "Terima kalau udah cukup kenal",
-      PC: "Terima aja",
+      PC: "Diamkan dulu, nanti aja",
       RB: "Terima, ikuti balik",
-      SS: "Cek dulu postingan lama, ada yang memalukan nggak",
+      SS: "Cek dulu postingan lama, takut ada yang memalukan",
     },
   },
   {
@@ -187,7 +187,7 @@ export const KARTU_MEDIA_SOSIAL: KartuSituasi[] = [
     situasi: "Kamu diminta jadi admin grup. Kamu...",
     pilihan: {
       PP: "Terima, bikin aturan singkat",
-      PC: "Terima, asal grupnya adem",
+      PC: "Tolak halus, cukup jadi anggota",
       RB: "Terima, ganti nama grup jadi lucu",
       SS: "Mau, asal berdua",
     },

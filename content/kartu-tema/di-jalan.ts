@@ -87,9 +87,9 @@ export const KARTU_DI_JALAN: KartuSituasi[] = [
     situasi: "Ada kendaraan mogok yang butuh didorong. Kamu...",
     pilihan: {
       PP: "Bantu, kasih aba-aba",
-      PC: "Bantu dorong pelan",
+      PC: "Lihat dulu, bantu kalau masih kurang orang",
       RB: "Turun paling dulu",
-      SS: "Bantu, lalu tawarin minum",
+      SS: "Nggak kuat dorong, beliin mereka minum",
     },
   },
   {
@@ -137,9 +137,9 @@ export const KARTU_DI_JALAN: KartuSituasi[] = [
     situasi: "Jalan pintas yang gelap atau jalan ramai yang jauh. Kamu...",
     pilihan: {
       PP: "Jalan ramai, lebih aman",
-      PC: "Jalan ramai, santai aja",
+      PC: "Tunggu, cari teman buat jalan bareng",
       RB: "Jalan pintas",
-      SS: "Jalan ramai, sambil teleponan",
+      SS: "Minta dijemput",
     },
   },
   {
@@ -158,7 +158,7 @@ export const KARTU_DI_JALAN: KartuSituasi[] = [
     pilihan: {
       PP: "Cuci tiap minggu, udah terjadwal",
       PC: "Nanti aja kalau sempat",
-      RB: "Cuci sendiri sekarang juga",
+      RB: "Sekarang juga, dikerjain sendiri",
       SS: "Cuci sambil nyanyi",
     },
   },
@@ -167,19 +167,19 @@ export const KARTU_DI_JALAN: KartuSituasi[] = [
     situasi: "Orang asing nanya arah ke kamu. Kamu...",
     pilihan: {
       PP: "Jelaskan urut, sebut patokannya",
-      PC: "Jelaskan pelan",
+      PC: "Bukain peta di HP, tunjukin",
       RB: "Antar sampai dekat",
-      SS: "Jelaskan, cek lagi dia udah paham",
+      SS: "Kalau nggak tahu, bantu tanya orang lain",
     },
   },
   {
     id: "tr18",
     situasi: "Pilih rute pulang hari ini. Kamu...",
     pilihan: {
-      PP: "Rute tercepat",
-      PC: "Rute paling teduh",
+      PP: "Yang tercepat",
+      PC: "Lewat jalan yang teduh",
       RB: "Rute yang belum pernah dilewati",
-      SS: "Rute yang lewat rumah teman",
+      SS: "Mampir lewat rumah teman",
     },
   },
   {

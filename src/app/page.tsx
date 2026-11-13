@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { DAFTAR_VARIAN } from "@content/varian";
 import { TEKS } from "@content/teks";
 import { Logo } from "@/components/Logo";
@@ -20,8 +21,15 @@ export default function HalamanAwal() {
           className="flex w-full max-w-[340px] items-center justify-center rounded-[28px] bg-biru-muda px-3 py-5"
           aria-hidden="true"
         >
-          {DAFTAR_VARIAN.map((v) => (
-            <Maskot key={v.id} varian={v} hias berdiri className="h-auto w-1/4 px-1.5" />
+          {DAFTAR_VARIAN.map((v, i) => (
+            <Maskot
+              key={v.id}
+              varian={v}
+              hias
+              berdiri
+              className="anim-melayang h-auto w-1/4 px-1.5"
+              style={{ "--tunda": `${i * -850}ms` } as CSSProperties}
+            />
           ))}
         </div>
 

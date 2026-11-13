@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { isi, TEKS } from "@content/teks";
 import { DAFTAR_VARIAN } from "@content/varian";
 import { Logo } from "@/components/Logo";
@@ -31,11 +32,21 @@ export default async function HalamanTerimaKasih({ params }: { params: Promise<{
           className="flex w-full max-w-[340px] items-center justify-center rounded-[28px] bg-biru-muda px-3 py-5"
           aria-hidden="true"
         >
-          {DAFTAR_VARIAN.map((v) => (
-            <Maskot key={v.id} varian={v} hias berdiri className="h-auto w-1/4 px-1.5" />
+          {DAFTAR_VARIAN.map((v, i) => (
+            <Maskot
+              key={v.id}
+              varian={v}
+              hias
+              berdiri
+              className="anim-lompat-dua h-auto w-1/4 px-1.5"
+              style={{ "--tunda": `${200 + i * 140}ms` } as CSSProperties}
+            />
           ))}
         </div>
-        <h1 className="mt-6 max-w-[21rem] text-[2rem] leading-[1.1] font-bold text-balance break-words">
+        <h1
+          className="anim-muncul mt-6 max-w-[21rem] text-[2rem] leading-[1.1] font-bold text-balance break-words"
+          style={{ "--tunda": "150ms" } as CSSProperties}
+        >
           {isi(TEKS.teman.terimaKasih, { nama })}
         </h1>
       </div>

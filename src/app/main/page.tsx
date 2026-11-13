@@ -21,8 +21,9 @@ function acak<T>(daftar: readonly T[]): T[] {
 export default function HalamanMain() {
   // Ambil beberapa kartu secara acak, lalu acak juga urutan pilihannya.
   // Yang dikirim ke layar hanya teks pilihan dan id varian. Nama varian tidak ikut.
-  const kartu: KartuTampil[] = acak(DAFTAR_KARTU)
-    .slice(0, PENGATURAN.jumlahKartu)
+  // Selain kartu untuk dijawab, diambil juga beberapa kartu cadangan untuk tombol "Ganti kartu".
+  const terambil: KartuTampil[] = acak(DAFTAR_KARTU)
+    .slice(0, PENGATURAN.jumlahKartu + PENGATURAN.maksGantiKartu)
     .map((k) => ({
       id: k.id,
       situasi: k.situasi,
@@ -34,5 +35,10 @@ export default function HalamanMain() {
       ),
     }));
 
-  return <AlurMain kartu={kartu} />;
+  return (
+    <AlurMain
+      kartu={terambil.slice(0, PENGATURAN.jumlahKartu)}
+      cadangan={terambil.slice(PENGATURAN.jumlahKartu)}
+    />
+  );
 }
