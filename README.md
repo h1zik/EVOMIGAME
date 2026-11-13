@@ -49,7 +49,8 @@ Semua teks dan pengaturan ada di folder `content/`. Komponen tidak perlu disentu
 | File | Isi |
 |---|---|
 | `content/varian.ts` | Daftar varian: nama, warna, maskot, deskripsi, link Shopee, `tersedia`, `teksPenawaran`, link waitlist |
-| `content/kartu.ts` | Kartu situasi dan pilihan jawabannya |
+| `content/kartu.ts` | Kartu situasi umum (k1 sampai k40) dan daftar tema yang dipakai |
+| `content/kartu-tema/*.ts` | Kartu situasi per tema, satu file per tema (sekolah, kerja, pertemanan, dan seterusnya) |
 | `content/kalimat.ts` | Kalimat validasi yang bisa dipilih teman |
 | `content/teks.ts` | Semua teks antarmuka |
 | `content/pengaturan.ts` | Angka aturan game: jumlah kartu, ambang buka (3), batas respons (30), ambang sorotan (10), batas permintaan, kontak privasi |
@@ -60,6 +61,16 @@ Aturan menulis teks game: bahasa sehari-hari, pakai kata "versi" (bukan "tipe" a
 
 Setelah mengedit konten di server, build ulang supaya perubahan tayang (lihat bagian deploy).
 
+### Menambah kartu situasi
+
+Sekarang ada 500 kartu, dan tiap sesi mengambil 5 secara acak.
+
+1. Buka file tema yang cocok di `content/kartu-tema/`, atau buat file tema baru lalu daftarkan di `KARTU_TEMA` di `content/kartu.ts`.
+2. Tambahkan entri dengan `id` yang belum dipakai, satu `situasi` yang diakhiri "Kamu...", dan satu pilihan untuk tiap kode varian (PP, PC, RB, SS).
+3. Jalankan `npm test`. Tesnya memeriksa id kembar, situasi kembar, pilihan yang kurang, nama varian yang bocor ke teks, em dash, dan panjang teks.
+
+Kode varian tidak pernah tampil ke pemain, dan urutan pilihan diacak saat tampil.
+
 ### Mengubah tombol varian ke waitlist
 
 Di `content/varian.ts`, ubah `tersedia` varian itu menjadi `false`. Tombol utamanya berganti dari "Lihat di Shopee" menjadi "Kabari aku kalau sudah ada" dan mengarah ke `urlWaitlist`.
@@ -68,7 +79,7 @@ Di `content/varian.ts`, ubah `tersedia` varian itu menjadi `false`. Tombol utama
 
 1. Tambahkan satu entri di `content/varian.ts` (id, kode, nama, warna, dan seterusnya).
 2. Taruh file maskotnya di `public/maskot/` (PNG transparan) dan tulis lokasinya di kolom `maskot`.
-3. Tambahkan satu pilihan dengan kode varian itu di tiap kartu di `content/kartu.ts`.
+3. Tambahkan satu pilihan dengan kode varian itu di tiap kartu, di `content/kartu.ts` dan semua file di `content/kartu-tema/`. `npm test` akan menunjukkan kartu mana yang belum lengkap.
 4. Tambahkan kalimat validasinya di `content/kalimat.ts`.
 
 Warna varian otomatis menjadi CSS variable `--v-{id}` dan `--v-{id}-muda`.
