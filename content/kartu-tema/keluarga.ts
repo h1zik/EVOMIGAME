@@ -97,8 +97,8 @@ export const KARTU_KELUARGA: KartuSituasi[] = [
     situasi: "Orang tua minta diajarin pakai aplikasi. Kamu...",
     pilihan: {
       PP: "Ajarin langkah demi langkah, tulis catatannya",
-      PC: "Ajarin sabar, ulang sampai bisa",
-      RB: "Langsung praktik, salah nggak apa-apa",
+      PC: "Sabar, ulang sampai bisa",
+      RB: "Kerjain aja sekalian biar cepat",
       SS: "Ajarin sambil ketawa bareng",
     },
   },
@@ -168,8 +168,8 @@ export const KARTU_KELUARGA: KartuSituasi[] = [
     pilihan: {
       PP: "Pilih yang cocok buat semua umur",
       PC: "Tempat tenang, banyak tempat duduknya",
-      RB: "Tempat yang belum pernah didatangi",
-      SS: "Tempat yang banyak kenangannya",
+      RB: "Yang belum pernah didatangi siapa pun",
+      SS: "Balik ke tempat yang banyak kenangannya",
     },
   },
   {
@@ -217,9 +217,9 @@ export const KARTU_KELUARGA: KartuSituasi[] = [
     situasi: "Jatah beres-beres rumah dibagi. Kamu...",
     pilihan: {
       PP: "Ambil bagian yang paling butuh rapi",
-      PC: "Ambil yang tersisa",
+      PC: "Terima yang tersisa",
       RB: "Tukar bagian biar nggak bosan",
-      SS: "Ambil bagian yang paling nggak disukai orang",
+      SS: "Pilih yang paling nggak disukai orang",
     },
   },
   {

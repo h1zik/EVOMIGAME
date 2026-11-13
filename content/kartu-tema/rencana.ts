@@ -147,8 +147,8 @@ export const KARTU_RENCANA: KartuSituasi[] = [
     situasi: "Kamu mau belajar satu keahlian baru tahun ini. Kamu...",
     pilihan: {
       PP: "Yang berguna buat pekerjaan",
-      PC: "Yang menenangkan",
-      RB: "Yang menantang nyali",
+      PC: "Sesuatu yang menenangkan",
+      RB: "Keahlian yang menantang nyali",
       SS: "Yang hasilnya bisa dijadikan hadiah",
     },
   },
@@ -176,10 +176,10 @@ export const KARTU_RENCANA: KartuSituasi[] = [
     id: "rc18",
     situasi: "Ada yang ngajak ikut proyek mendadak besok pagi. Kamu...",
     pilihan: {
-      PP: "Tanya detailnya dulu",
+      PP: "Tolak, mendadak begitu susah diatur",
       PC: "Ikut kalau nggak ganggu yang lain",
       RB: "Ikut",
-      SS: "Ikut kalau kenal orangnya",
+      SS: "Mau kalau kenal orangnya",
     },
   },
   {
@@ -216,10 +216,10 @@ export const KARTU_RENCANA: KartuSituasi[] = [
     id: "rc22",
     situasi: "Harus pilih tim: yang paling kuat atau yang paling akrab. Kamu...",
     pilihan: {
-      PP: "Yang paling kuat",
-      PC: "Yang paling akrab",
+      PP: "Tim paling kuat",
+      PC: "Tim paling akrab",
       RB: "Yang butuh orang nekat",
-      SS: "Yang ada temanmu",
+      SS: "Mana aja, asal ada temanmu",
     },
   },
   {

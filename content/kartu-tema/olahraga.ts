@@ -17,7 +17,7 @@ export const KARTU_OLAHRAGA: KartuSituasi[] = [
     situasi: "Diajak lari bareng padahal kamu jarang olahraga. Kamu...",
     pilihan: {
       PP: "Ikut, atur tempo sendiri",
-      PC: "Jalan cepat aja",
+      PC: "Nolak dulu, janji ikut lain kali",
       RB: "Lari kencang dari awal",
       SS: "Ikut, ngobrol di barisan belakang",
     },
@@ -107,9 +107,9 @@ export const KARTU_OLAHRAGA: KartuSituasi[] = [
     situasi: "Pelatih kasih latihan tambahan. Kamu...",
     pilihan: {
       PP: "Kerjain sesuai hitungan",
-      PC: "Kerjain pelan sampai selesai",
+      PC: "Kerjain semampunya, sisanya besok",
       RB: "Minta ditambah lagi",
-      SS: "Kerjain sambil saling semangatin",
+      SS: "Ngeluh dulu, lalu dikerjain bareng teman",
     },
   },
   {
@@ -167,7 +167,7 @@ export const KARTU_OLAHRAGA: KartuSituasi[] = [
     situasi: "Ada tantangan jalan 10 ribu langkah sehari. Kamu...",
     pilihan: {
       PP: "Pantau lewat aplikasi",
-      PC: "Jalan sore santai",
+      PC: "Nggak ikut tantangan, jalan ya jalan aja",
       RB: "Targetnya dua kali lipat",
       SS: "Jalan sambil teleponan",
     },
@@ -177,9 +177,9 @@ export const KARTU_OLAHRAGA: KartuSituasi[] = [
     situasi: "Teman ngajak coba olahraga yang belum pernah kamu coba. Kamu...",
     pilihan: {
       PP: "Pelajari dulu dasarnya",
-      PC: "Coba santai",
+      PC: "Nonton dulu dari pinggir",
       RB: "Langsung turun ke lapangan",
-      SS: "Ketawa lihat diri sendiri jatuh bangun",
+      SS: "Coba, ketawa lihat diri sendiri jatuh bangun",
     },
   },
   {
@@ -197,8 +197,8 @@ export const KARTU_OLAHRAGA: KartuSituasi[] = [
     situasi: "Kamu mau pilih satu olahraga buat rutin. Kamu...",
     pilihan: {
       PP: "Yang kemajuannya bisa diukur",
-      PC: "Yang tenang",
-      RB: "Yang memacu adrenalin",
+      PC: "Olahraga yang tenang",
+      RB: "Apa pun yang memacu adrenalin",
       SS: "Yang bisa bareng teman",
     },
   },

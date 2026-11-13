@@ -68,8 +68,8 @@ export const KARTU_TEKNOLOGI: KartuSituasi[] = [
     pilihan: {
       PP: "Tunggu ulasannya dulu",
       PC: "Main kalau lagi senggang",
-      RB: "Main malam ini juga",
-      SS: "Main bareng teman",
+      RB: "Malam ini juga, begadang",
+      SS: "Ajak teman main bareng",
     },
   },
   {
@@ -177,8 +177,8 @@ export const KARTU_TEKNOLOGI: KartuSituasi[] = [
     situasi: "Orang di sebelahmu mau pinjam pengisi daya. Kamu...",
     pilihan: {
       PP: "Pinjamin, bilang butuh lagi jam berapa",
-      PC: "Silakan",
-      RB: "Pinjamin, sekalian ngobrol",
+      PC: "Silakan, pakai aja",
+      RB: "Bilang maaf, baterai sendiri juga tipis",
       SS: "Pinjamin walau baterai sendiri tipis",
     },
   },
@@ -228,7 +228,7 @@ export const KARTU_TEKNOLOGI: KartuSituasi[] = [
     pilihan: {
       PP: "Nama sendiri, rapi",
       PC: "Yang sederhana",
-      RB: "Yang nyeleneh",
+      RB: "Nyeleneh, biar diingat",
       SS: "Yang imut",
     },
   },

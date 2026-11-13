@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { PENGATURAN } from "@content/pengaturan";
 import { isi, TEKS } from "@content/teks";
 import { DAFTAR_VARIAN } from "@content/varian";
@@ -44,8 +45,9 @@ export function TemanTerkunci({
             <span
               key={i}
               className={`grid size-9 place-items-center rounded-full border-2 ${
-                i < terisi ? "border-biru bg-biru text-putih" : "border-dashed border-biru-garis bg-putih"
+                i < terisi ? "anim-muncul border-biru bg-biru text-putih" : "border-dashed border-biru-garis bg-putih"
               }`}
+              style={{ "--tunda": `${300 + i * 140}ms` } as CSSProperties}
             >
               {i < terisi ? (
                 <svg viewBox="0 0 16 16" className="size-4" fill="none" stroke="currentColor" strokeWidth="2.5">

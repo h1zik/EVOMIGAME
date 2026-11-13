@@ -272,7 +272,7 @@ const KARTU_DASAR: KartuSituasi[] = [
     pilihan: {
       PP: "Daftar kalau jadwalnya masuk",
       RB: "Angkat tangan duluan",
-      PC: "Bantu di belakang layar aja",
+      PC: "Nggak daftar, datang aja sebagai penonton",
       SS: "Mau ikut kalau ada teman yang bareng",
     },
   },
@@ -320,8 +320,8 @@ const KARTU_DASAR: KartuSituasi[] = [
     id: "k28",
     situasi: "Kamu dapat hadiah yang sebenarnya kurang kamu suka. Kamu...",
     pilihan: {
-      PP: "Bilang makasih, cari cara biar tetap kepakai",
-      RB: "Bilang makasih, jujur kalau ditanya",
+      PP: "Simpan, cari cara biar tetap kepakai",
+      RB: "Jujur kalau ditanya, kurang cocok",
       PC: "Senang aja, yang penting niatnya",
       SS: "Bilang suka banget biar dia senang",
     },
@@ -350,10 +350,10 @@ const KARTU_DASAR: KartuSituasi[] = [
     id: "k31",
     situasi: "Teman minta ditemani ke acara yang kurang kamu suka. Kamu...",
     pilihan: {
-      PP: "Ikut, tapi bilang dari awal pulang jam berapa",
-      RB: "Ikut, siapa tahu malah seru",
-      PC: "Ikut aja, kasihan kalau dia sendirian",
-      SS: "Ikut, nggak tega nolak",
+      PP: "Bilang nggak bisa, tawarin ketemu lain waktu",
+      RB: '"Nggak deh, itu bukan acaraku"',
+      PC: "Ikut aja, cari pojok yang enak",
+      SS: "Nggak tega nolak, akhirnya ikut",
     },
   },
   {
@@ -381,8 +381,8 @@ const KARTU_DASAR: KartuSituasi[] = [
     situasi: "Kamu ditunjuk jadi ketua tanpa ditanya dulu. Kamu...",
     pilihan: {
       PP: "Terima, langsung susun langkahnya",
-      RB: "Terima, bikin cara kerja yang beda",
-      PC: "Terima, yang penting semua rukun",
+      RB: "Protes dulu, kok nggak ditanya",
+      PC: "Usul ketuanya orang lain, kamu bantu aja",
       SS: "Kaget, terima sambil minta dibantu",
     },
   },

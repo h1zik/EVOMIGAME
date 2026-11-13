@@ -7,6 +7,7 @@ import { Kartu } from "@/components/Kartu";
 import { Komposisi } from "@/components/Komposisi";
 import { LinkHasil } from "@/components/LinkHasil";
 import { Logo } from "@/components/Logo";
+import { Perayaan } from "@/components/Perayaan";
 import { SegarkanOtomatis } from "@/components/SegarkanOtomatis";
 import { TawaranWhatsapp } from "@/components/TawaranWhatsapp";
 import { TemanTerkunci } from "@/components/TemanTerkunci";
@@ -78,6 +79,13 @@ export default async function HalamanHasil({ params }: { params: Promise<{ token
       )}
 
       <SegarkanOtomatis />
+
+      {/* Hujan maskot: sekali setelah selesai menjawab, dan sekali saat hasil pertama kali terbuka. */}
+      {ringkasan.terbuka ? (
+        <Perayaan key="terbuka" pemicu="terbuka" id={pemain.kodePublik} />
+      ) : (
+        <Perayaan key="kuis" pemicu="kuis" id={pemain.tokenRahasia} />
+      )}
 
       <div className="mt-2">
         <TombolUnduh token={pemain.tokenRahasia} kode={pemain.kodePublik} />

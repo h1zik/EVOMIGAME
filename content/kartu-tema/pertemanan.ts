@@ -17,8 +17,8 @@ export const KARTU_PERTEMANAN: KartuSituasi[] = [
     situasi: "Temanmu mau pinjam uang. Kamu...",
     pilihan: {
       PP: "Pinjamin, sepakati kapan kembalinya",
-      PC: "Pinjamin kalau ada, nggak banyak tanya",
-      RB: "Tanya dulu buat apa",
+      PC: "Kasih semampunya, nggak dihitung utang",
+      RB: "Bilang jujur lagi nggak bisa",
       SS: "Pinjamin, nanti nggak tega nagih",
     },
   },
@@ -116,7 +116,7 @@ export const KARTU_PERTEMANAN: KartuSituasi[] = [
     id: "tm12",
     situasi: "Teman ngajak mulai usaha bareng. Kamu...",
     pilihan: {
-      PP: "Minta hitung-hitungannya dulu",
+      PP: "Tolak, nggak mau campur uang sama pertemanan",
       PC: "Ikut, asal pertemanan nggak jadi renggang",
       RB: "Ayo, mulai minggu ini",
       SS: "Mau, ambil bagian yang ngurus kemasan",
@@ -176,10 +176,10 @@ export const KARTU_PERTEMANAN: KartuSituasi[] = [
     id: "tm18",
     situasi: "Temanmu ngajak nginep di rumahnya. Kamu...",
     pilihan: {
-      PP: "Bawa perlengkapan lengkap",
-      PC: "Bawa bantal kesayangan",
+      PP: "Ikut, bawa perlengkapan lengkap",
+      PC: "Main sampai malam, tidur tetap di rumah",
       RB: "Siap begadang sampai pagi",
-      SS: "Bawa camilan buat semua",
+      SS: "Ikut, bawa camilan buat semua",
     },
   },
   {

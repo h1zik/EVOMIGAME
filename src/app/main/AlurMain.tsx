@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { PENGATURAN } from "@content/pengaturan";
 import { isi, TEKS } from "@content/teks";
+import { DAFTAR_VARIAN } from "@content/varian";
 import { Kartu } from "@/components/Kartu";
 import { Logo } from "@/components/Logo";
+import { Maskot } from "@/components/Maskot";
 import { Tombol } from "@/components/Tombol";
 import { bersihkanNama, periksaPanjangNama } from "@/lib/nama";
 import { catatEvent } from "@/lib/event-klien";
-import { ambilIdPerangkat, simpanHasil } from "@/lib/perangkat-klien";
+import { ambilIdPerangkat, simpanHasil, tandaiRayakan } from "@/lib/perangkat-klien";
 import { ambilSumber, tangkapSumber } from "@/lib/sumber-klien";
 import { buatPemain, periksaNama } from "./aksi";
 
@@ -25,9 +27,12 @@ type Jawaban = { idKartu: string; idVarian: string };
 /** Langkah -1 adalah isi nama. Langkah 0 dan seterusnya adalah kartu situasi. */
 const LANGKAH_NAMA = -1;
 
-export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
+export function AlurMain({ kartu, cadangan }: { kartu: KartuTampil[]; cadangan: KartuTampil[] }) {
   const router = useRouter();
   const [langkah, setLangkah] = useState(LANGKAH_NAMA);
+  // Kartu yang sedang dipakai, dan kartu cadangan untuk tombol "Ganti kartu".
+  const [daftar, setDaftar] = useState(kartu);
+  const [stok, setStok] = useState(cadangan);
   const [nama, setNama] = useState("");
   const [galat, setGalat] = useState<string | null>(null);
   const [jawaban, setJawaban] = useState<Jawaban[]>([]);
@@ -37,8 +42,9 @@ export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
   const judulRef = useRef<HTMLHeadingElement>(null);
   const pertamaKali = useRef(true);
 
-  const total = kartu.length;
-  const kartuIni = langkah >= 0 ? kartu[langkah] : null;
+  const total = daftar.length;
+  const kartuIni = langkah >= 0 ? daftar[langkah] : null;
+  const idKartuIni = kartuIni?.id;
 
   // Tiap ganti layar, fokus pindah ke judulnya supaya pembaca layar dan keyboard ikut pindah.
   useEffect(() => {
@@ -47,7 +53,7 @@ export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
       return;
     }
     judulRef.current?.focus();
-  }, [langkah, mengirim]);
+  }, [langkah, mengirim, idKartuIni]);
 
   async function kirimNama(e: FormEvent) {
     e.preventDefault();
@@ -84,15 +90,22 @@ export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
     setGalat(null);
     try {
       const { src, dari } = ambilSumber();
-      const hasil = await buatPemain({
-        nama,
-        jawaban: semua,
-        idPerangkat: ambilIdPerangkat(),
-        src,
-        kodePengajak: dari,
-      });
+      // Layar "menyusun versimu" ditahan sebentar supaya maskotnya sempat terlihat melompat.
+      // Kalau perangkat meminta gerakan dikurangi, tidak ada jeda tambahan.
+      const tenang = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const [hasil] = await Promise.all([
+        buatPemain({
+          nama,
+          jawaban: semua,
+          idPerangkat: ambilIdPerangkat(),
+          src,
+          kodePengajak: dari,
+        }),
+        new Promise((lanjut) => window.setTimeout(lanjut, tenang ? 0 : 1400)),
+      ]);
       if (hasil.ok) {
         simpanHasil({ token: hasil.token, kode: hasil.kode, nama });
+        tandaiRayakan(hasil.token);
         router.replace(`/hasil/${hasil.token}`);
         return;
       }
@@ -123,6 +136,18 @@ export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
     setLangkah(langkah - 1);
   }
 
+  /**
+   * Menukar kartu yang sedang tampil dengan kartu cadangan, untuk pemain yang merasa
+   * tidak ada jawaban yang cocok. Jawaban di kartu lain tidak berubah.
+   */
+  function gantiKartu() {
+    if (!kartuIni || terpilih || mengirim || stok.length === 0) return;
+    const [pengganti, ...sisa] = stok;
+    setDaftar(daftar.map((k, i) => (i === langkah ? pengganti : k)));
+    setStok(sisa);
+    setGalat(null);
+  }
+
   const selesaiMenjawab = jawaban.length === total;
 
   return (
@@ -138,9 +163,9 @@ export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
 
       {/* Indikator progres: satu ruas per kartu. */}
       <div className="mt-3 flex gap-1.5" aria-hidden="true">
-        {kartu.map((k, i) => (
+        {daftar.map((_, i) => (
           <span
-            key={k.id}
+            key={i}
             className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${
               i < jawaban.length || (i === langkah && !selesaiMenjawab) ? "bg-putih" : "bg-putih/30"
             } ${i === langkah && i >= jawaban.length ? "opacity-70" : ""}`}
@@ -189,8 +214,23 @@ export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
             </form>
           </Kartu>
         ) : mengirim || (selesaiMenjawab && !galat) ? (
-          <div className="text-center" role="status">
-            <h1 ref={judulRef} tabIndex={-1} className="text-2xl font-bold outline-none">
+          <div className="pt-10 text-center" role="status">
+            <div
+              className="mx-auto flex w-full max-w-[300px] items-end justify-center rounded-[28px] bg-biru-muda px-3 pt-7 pb-4"
+              aria-hidden="true"
+            >
+              {DAFTAR_VARIAN.map((v, i) => (
+                <Maskot
+                  key={v.id}
+                  varian={v}
+                  hias
+                  berdiri
+                  className="anim-lompat h-auto w-1/4 px-1.5"
+                  style={{ "--tunda": `${i * 130}ms` } as CSSProperties}
+                />
+              ))}
+            </div>
+            <h1 ref={judulRef} tabIndex={-1} className="mt-6 text-2xl font-bold outline-none">
               {TEKS.main.menyimpan}
             </h1>
           </div>
@@ -224,7 +264,7 @@ export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
                       aria-pressed={aktif}
                       className={`flex min-h-[58px] w-full items-center rounded-[18px] border-2 px-4 py-3 text-left text-[1.0625rem] leading-snug font-semibold transition-colors duration-150 ${
                         aktif
-                          ? "border-biru bg-biru text-putih"
+                          ? "anim-denyut border-biru bg-biru text-putih"
                           : "border-biru-garis bg-putih text-teks hover:bg-biru-muda active:bg-biru-muda"
                       }`}
                     >
@@ -238,13 +278,29 @@ export function AlurMain({ kartu }: { kartu: KartuTampil[] }) {
         ) : null}
 
         {langkah > LANGKAH_NAMA && !mengirim && !selesaiMenjawab ? (
-          <button
-            type="button"
-            onClick={kembali}
-            className="mx-auto mt-3 min-h-11 rounded-full px-5 font-semibold underline underline-offset-4"
-          >
-            {TEKS.main.kembali}
-          </button>
+          <div className="mt-3 flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={kembali}
+              className="min-h-11 rounded-full px-3 font-semibold underline underline-offset-4"
+            >
+              {TEKS.main.kembali}
+            </button>
+            {PENGATURAN.maksGantiKartu > 0 ? (
+              stok.length > 0 ? (
+                <button
+                  type="button"
+                  onClick={gantiKartu}
+                  disabled={terpilih !== null}
+                  className="min-h-11 rounded-full px-3 text-right font-semibold underline underline-offset-4"
+                >
+                  {TEKS.main.gantiKartu} ({isi(TEKS.main.sisaGanti, { sisa: stok.length })})
+                </button>
+              ) : (
+                <p className="px-3 text-right">{TEKS.main.gantiHabis}</p>
+              )
+            ) : null}
+          </div>
         ) : null}
       </div>
     </main>

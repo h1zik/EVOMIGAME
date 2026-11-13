@@ -32,14 +32,19 @@ export function Perbandingan({
         role="img"
         aria-label={`${TEKS.hasil.kolomTeman}: ${DAFTAR_VARIAN.map((v) => `${v.namaTampil} ${persenTeman[v.id] ?? 0} persen`).join(", ")}`}
       >
-        {DAFTAR_VARIAN.map((v) => (
+        {DAFTAR_VARIAN.map((v, i) => (
           <Maskot
             key={v.id}
             varian={v}
             hias
             berdiri
-            className="anim-membesar h-auto px-1"
-            style={{ width: `${dasar + (persenTeman[v.id] ?? 0) * perPersen}%` }}
+            className="anim-maskot-masuk h-auto px-1"
+            style={
+              {
+                width: `${dasar + (persenTeman[v.id] ?? 0) * perPersen}%`,
+                "--tunda": `${i * 110}ms`,
+              } as CSSProperties
+            }
           />
         ))}
       </div>

@@ -178,7 +178,7 @@ export const KARTU_SEKOLAH: KartuSituasi[] = [
     pilihan: {
       PP: "Bikin ringkasan, ajarin yang penting dulu",
       PC: "Ajarin pelan-pelan sampai dia paham",
-      RB: '"Gas, malam ini kita kebut"',
+      RB: "Bilang jujur, kamu juga belum belajar",
       SS: "Mau banget, sekalian bawain camilan",
     },
   },
@@ -187,7 +187,7 @@ export const KARTU_SEKOLAH: KartuSituasi[] = [
     situasi: "Kamu telat masuk kelas. Kamu...",
     pilihan: {
       PP: "Masuk tenang, minta maaf singkat, duduk",
-      PC: "Masuk pelan, cari kursi terdekat",
+      PC: "Pelan-pelan, cari kursi terdekat",
       RB: "Masuk aja seperti biasa",
       SS: "Ragu di depan pintu, nunggu momen yang pas",
     },
@@ -207,8 +207,8 @@ export const KARTU_SEKOLAH: KartuSituasi[] = [
     situasi: "Disuruh pilih jurusan atau mata kuliah. Kamu...",
     pilihan: {
       PP: "Pilih yang sesuai rencana ke depan",
-      PC: "Pilih yang bikin betah",
-      RB: "Pilih yang paling bikin penasaran",
+      PC: "Ambil yang bikin betah",
+      RB: "Yang paling bikin penasaran",
       SS: "Tanya dulu ke orang yang kamu percaya",
     },
   },

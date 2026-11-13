@@ -59,7 +59,7 @@ export const KARTU_KERJA: KartuSituasi[] = [
       PP: "Pelajari dulu, terima kalau sanggup",
       PC: "Terima kalau timnya enak diajak kerja",
       RB: "Ambil, belajar sambil jalan",
-      SS: "Senang ditawarin, tapi ragu sama diri sendiri",
+      SS: "Tolak halus, belum yakin sama diri sendiri",
     },
   },
   {
@@ -109,7 +109,7 @@ export const KARTU_KERJA: KartuSituasi[] = [
       PP: "Ikut kalau materinya berguna",
       PC: "Ikut, sekalian ganti suasana",
       RB: "Daftar paling awal",
-      SS: "Ikut kalau ada teman sekamar yang dikenal",
+      SS: "Nggak ikut, udah janji sama keluarga",
     },
   },
   {

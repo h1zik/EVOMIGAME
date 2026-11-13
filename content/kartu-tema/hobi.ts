@@ -17,9 +17,9 @@ export const KARTU_HOBI: KartuSituasi[] = [
     situasi: "Film yang kamu tunggu akhirnya tayang. Kamu...",
     pilihan: {
       PP: "Pesan tiket dari jauh hari",
-      PC: "Nonton kalau udah sepi",
+      PC: "Tunggu sampai bioskopnya sepi",
       RB: "Nonton hari pertama, jam pertama",
-      SS: "Nonton sama orang yang sama-sama nunggu",
+      SS: "Ajak orang yang sama-sama nunggu",
     },
   },
   {
@@ -46,7 +46,7 @@ export const KARTU_HOBI: KartuSituasi[] = [
     id: "hb05",
     situasi: "Ada kelas hobi baru dibuka. Kamu...",
     pilihan: {
-      PP: "Lihat jadwal dan materinya",
+      PP: "Nggak dulu, jadwal udah penuh",
       PC: "Ikut kalau suasananya santai",
       RB: "Daftar yang paling asing",
       SS: "Daftar bareng teman",
@@ -89,7 +89,7 @@ export const KARTU_HOBI: KartuSituasi[] = [
       PP: "Baca ringkasannya dulu",
       PC: "Ikut, nonton dengan tenang",
       RB: "Ayo, yang paling seram",
-      SS: "Ikut, nutup mata separuh film",
+      SS: "Nolak, takut nggak bisa tidur",
     },
   },
   {
@@ -97,9 +97,9 @@ export const KARTU_HOBI: KartuSituasi[] = [
     situasi: "Kamu disuruh pilih lagu di mobil. Kamu...",
     pilihan: {
       PP: "Daftar putar yang udah disusun",
-      PC: "Lagu pelan",
+      PC: "Yang pelan-pelan",
       RB: "Lagu kencang, volume naik",
-      SS: "Lagu yang semua bisa nyanyi",
+      SS: "Tanya dulu, semua mau lagu apa",
     },
   },
   {
@@ -116,10 +116,10 @@ export const KARTU_HOBI: KartuSituasi[] = [
     id: "hb12",
     situasi: "Kamu ikut lomba menggambar padahal nggak jago. Kamu...",
     pilihan: {
-      PP: "Gambar yang sederhana tapi rapi",
+      PP: "Bentuk sederhana, yang penting rapi",
       PC: "Gambar santai, asal senang",
-      RB: "Gambar seaneh mungkin",
-      SS: "Gambar orang-orang terdekat",
+      RB: "Seaneh mungkin",
+      SS: "Orang-orang terdekat",
     },
   },
   {
@@ -226,10 +226,10 @@ export const KARTU_HOBI: KartuSituasi[] = [
     id: "hb23",
     situasi: "Kamu dipinjami kamera selama sehari. Kamu...",
     pilihan: {
-      PP: "Foto bangunan dan garis yang rapi",
-      PC: "Foto langit dan pohon",
-      RB: "Foto orang di jalan",
-      SS: "Foto teman dan keluarga",
+      PP: "Bangunan dan garis yang rapi",
+      PC: "Langit dan pohon",
+      RB: "Orang-orang di jalan",
+      SS: "Teman dan keluarga",
     },
   },
 ];

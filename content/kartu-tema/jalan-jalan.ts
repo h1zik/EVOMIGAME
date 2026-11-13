@@ -67,9 +67,9 @@ export const KARTU_JALAN_JALAN: KartuSituasi[] = [
     situasi: "Waktunya beli oleh-oleh. Kamu...",
     pilihan: {
       PP: "Udah ada daftar siapa dapat apa",
-      PC: "Beli yang khas, secukupnya",
-      RB: "Beli yang paling unik",
-      SS: "Beli banyak, takut ada yang terlewat",
+      PC: "Beli seadanya, yang penting ada",
+      RB: "Nggak beli, traktir mereka pas pulang",
+      SS: "Borong, takut ada yang terlewat",
     },
   },
   {
@@ -157,7 +157,7 @@ export const KARTU_JALAN_JALAN: KartuSituasi[] = [
     situasi: "Teman ngajak mendaki. Kamu...",
     pilihan: {
       PP: "Latihan dan siapin perlengkapan",
-      PC: "Ikut, jalan santai di belakang",
+      PC: "Nggak ikut, titip foto pemandangannya",
       RB: "Ayo, makin tinggi makin seru",
       SS: "Ikut, bawain bekal buat semua",
     },
