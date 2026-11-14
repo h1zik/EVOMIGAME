@@ -85,7 +85,7 @@ export const TEKS = {
 
   teman: {
     tanya1:
-      "Menurut kamu, {nama} paling sering kelihatan seperti yang mana? Pilih dua.",
+      "Menurut kamu, {nama} paling sering kelihatan kayak yang mana? Pilih dua ya.",
     tanya2: "Pilih satu kalimat buat {nama}.",
     labelNama: "Nama panggilanmu (boleh dikosongkan)",
     tombolLanjut: "Lanjut",
