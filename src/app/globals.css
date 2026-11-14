@@ -12,6 +12,9 @@
   --putih: #ffffff;
   --teks: #0f172a;
   --shopee: #ee4d2d;
+  /* Tindakan yang tidak bisa dibatalkan, dan pesan galat di atas putih. */
+  --bahaya: #c62d20;
+  --bahaya-muda: #f9dfdc;
 
   /* Turunan terang dari biru brand, untuk latar lembut dan garis halus. */
   --biru-langit: #3e97d6;
@@ -34,6 +37,8 @@
   --color-teks: var(--teks);
   --color-teks-redup: var(--teks-redup);
   --color-shopee: var(--shopee);
+  --color-bahaya: var(--bahaya);
+  --color-bahaya-muda: var(--bahaya-muda);
   /* Warna varian aktif. Diisi lewat style pada elemen pembungkus. */
   --color-v: var(--v);
   --color-v-muda: var(--v-muda);

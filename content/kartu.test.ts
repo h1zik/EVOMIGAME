@@ -11,6 +11,14 @@ import { DAFTAR_VARIAN } from "./varian";
 const KODE = DAFTAR_VARIAN.map((v) => v.kode).sort();
 const NAMA_VARIAN = DAFTAR_VARIAN.map((v) => v.namaTampil.toLowerCase());
 
+/** Kata pertama sebuah pilihan, tanpa tanda kutip pembuka dan tanda baca. */
+const kataAwal = (teks: string) =>
+  teks
+    .toLowerCase()
+    .replace(/^["']+/, "")
+    .split(/[\s,.!?"]+/)
+    .filter(Boolean)[0] ?? "";
+
 describe("kartu situasi", () => {
   it("jumlah kartu cukup untuk satu sesi", () => {
     expect(DAFTAR_KARTU.length).toBeGreaterThanOrEqual(PENGATURAN.jumlahKartu);
@@ -31,8 +39,12 @@ describe("kartu situasi", () => {
   });
 
   it("tiap situasi diakhiri ajakan menjawab yang sama", () => {
-    // Boleh "Kamu..." atau "kamu..." (kartu k8 dari panduan memakai huruf kecil).
+    // Boleh "Kamu..." atau "kamu..." (huruf kecil kalau situasinya satu kalimat yang menyambung).
     for (const k of DAFTAR_KARTU) expect(/kamu\.\.\.$/i.test(k.situasi), k.id).toBe(true);
+  });
+
+  it('situasi tidak dibuka dengan "Kamu", supaya tidak dobel dengan "Kamu..." di akhir', () => {
+    for (const k of DAFTAR_KARTU) expect(/^kamu\b/i.test(k.situasi), k.id).toBe(false);
   });
 
   it("tiap kartu punya tepat satu pilihan untuk tiap varian", () => {
@@ -53,17 +65,26 @@ describe("kartu situasi", () => {
     // Kalau tiga atau empat jawaban diawali kata yang sama ("Ikut...", "Beli...", "Datang..."),
     // biasanya tindakannya sama dan cuma alasannya yang beda, jadi pemain tidak benar-benar memilih.
     // Untuk kartu berisi ajakan atau permintaan, pastikan juga ada pilihan untuk yang mau menolak.
-    const kataAwal = (teks: string) =>
-      teks
-        .toLowerCase()
-        .replace(/^["']+/, "")
-        .split(/[\s,.!?"]+/)
-        .filter(Boolean)[0] ?? "";
     for (const k of DAFTAR_KARTU) {
       const hitung = new Map<string, number>();
       for (const teks of Object.values(k.pilihan)) hitung.set(kataAwal(teks), (hitung.get(kataAwal(teks)) ?? 0) + 1);
       const terbanyak = [...hitung.entries()].sort((a, b) => b[1] - a[1])[0];
       expect(terbanyak[1], `${k.id}: "${terbanyak[0]}" dipakai ${terbanyak[1]} kali`).toBeLessThanOrEqual(2);
+    }
+  });
+
+  it("jawaban satu varian tidak punya kata pembuka khas yang bisa ditebak", () => {
+    // Kalau jawaban satu varian hampir selalu diawali kata yang sama (misalnya "Langsung..."),
+    // pemain bisa mengenali variannya tanpa membaca isinya. Batasnya 12% dari semua kartu.
+    const batas = Math.ceil(DAFTAR_KARTU.length * 0.12);
+    for (const kode of KODE) {
+      const hitung = new Map<string, number>();
+      for (const k of DAFTAR_KARTU) {
+        const kata = kataAwal(k.pilihan[kode] ?? "");
+        hitung.set(kata, (hitung.get(kata) ?? 0) + 1);
+      }
+      const terbanyak = [...hitung.entries()].sort((a, b) => b[1] - a[1])[0];
+      expect(terbanyak[1], `${kode}: "${terbanyak[0]}" membuka ${terbanyak[1]} jawaban`).toBeLessThanOrEqual(batas);
     }
   });
 

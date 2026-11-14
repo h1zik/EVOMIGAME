@@ -5,11 +5,12 @@ import { useState } from "react";
 import { TEKS } from "@content/teks";
 import { hapusData } from "@/app/hasil/[token]/aksi";
 import { lupakanHasil } from "@/lib/perangkat-klien";
+import { BarisLipat, Ikon, IKON } from "./BarisLipat";
 import { Tombol } from "./Tombol";
 
 /**
  * Hapus data sendiri dari halaman hasil. Dua langkah supaya tidak terhapus karena salah tekan:
- * tekan "Hapus dataku", lalu konfirmasi "Ya, hapus semuanya".
+ * buka baris "Hapus dataku", lalu konfirmasi "Ya, hapus semuanya".
  */
 export function HapusData({ token }: { token: string }) {
   const router = useRouter();
@@ -36,33 +37,31 @@ export function HapusData({ token }: { token: string }) {
   }
 
   return (
-    <section aria-labelledby="judul-hapus" className="px-1 text-center">
-      <h2 id="judul-hapus" className="text-lg font-bold">
-        {TEKS.hapus.judul}
-      </h2>
-      <p className="mx-auto mt-1 max-w-[21rem] text-pretty">{TEKS.hapus.penjelasan}</p>
-      {yakin ? (
-        <div className="mt-4" role="group" aria-label={TEKS.hapus.yakin}>
-          <p className="font-bold">{TEKS.hapus.yakin}</p>
-          <div className="mt-3 grid gap-2.5">
-            <Tombol gaya="putih" ukuran="ringkas" onClick={() => void hapus()} disabled={sibuk}>
-              {sibuk ? TEKS.hapus.menghapus : TEKS.hapus.konfirmasi}
-            </Tombol>
-            <Tombol gaya="garis" ukuran="ringkas" onClick={() => setYakin(false)} disabled={sibuk}>
-              {TEKS.hapus.batal}
-            </Tombol>
-          </div>
-        </div>
-      ) : (
-        <Tombol gaya="garis" ukuran="ringkas" className="mt-4" onClick={() => setYakin(true)}>
-          {TEKS.hapus.tombol}
+    <BarisLipat
+      id="hapus"
+      nada="bahaya"
+      ikon={<Ikon d={IKON.hapus} />}
+      judul={TEKS.hapus.judul}
+      keterangan={TEKS.hapus.keterangan}
+      terbuka={yakin}
+      onUbah={(buka) => {
+        if (!sibuk) setYakin(buka);
+      }}
+    >
+      <p className="text-teks-redup text-pretty">{TEKS.hapus.penjelasan}</p>
+      <div className="mt-4 grid gap-2.5" role="group" aria-label={TEKS.hapus.yakin}>
+        <Tombol gaya="bahaya" ukuran="ringkas" onClick={() => void hapus()} disabled={sibuk}>
+          {sibuk ? TEKS.hapus.menghapus : TEKS.hapus.konfirmasi}
         </Tombol>
-      )}
+        <Tombol gaya="garis-biru" ukuran="ringkas" onClick={() => setYakin(false)} disabled={sibuk}>
+          {TEKS.hapus.batal}
+        </Tombol>
+      </div>
       {galat ? (
-        <p role="alert" className="mt-3 font-semibold">
+        <p role="alert" className="mt-3 font-semibold text-bahaya">
           {galat}
         </p>
       ) : null}
-    </section>
+    </BarisLipat>
   );
 }

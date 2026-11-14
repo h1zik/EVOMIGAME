@@ -47,7 +47,9 @@ export const TEKS = {
     tombolWhatsapp: "Kirim lewat WhatsApp",
     tombolSalinLinkHasil: "Salin link hasil",
     bantuanLinkHasil:
-      "Simpan link ini kalau mau buka hasilmu dari perangkat lain. Jangan dibagikan, ini khusus buat kamu.",
+      "Buat buka di HP lain. Jangan dibagikan.",
+    tombolSalinRingkas: "Salin",
+    labelLainnya: "Simpan hasil dan atur datamu",
     tombolUnduh: "Unduh kartu hasil",
     tersalin: "Tersalin",
     kolomMenurut: "Menurut {nama}",
@@ -126,9 +128,8 @@ export const TEKS = {
   },
 
   whatsapp: {
-    judul: "Simpan hasil dan dapat kabar dari EVOMI",
-    penjelasan: "Ini opsional. Isi nomor WhatsApp kalau kamu mau dikabari EVOMI.",
-    tombolBuka: "Isi nomor WhatsApp",
+    judul: "Dapat kabar dari EVOMI",
+    keterangan: "Opsional, lewat WhatsApp",
     label: "Nomor WhatsApp",
     contoh: "Contoh: 081234567890",
     setuju:
@@ -144,9 +145,9 @@ export const TEKS = {
 
   hapus: {
     judul: "Hapus dataku",
+    keterangan: "Nama, jawaban, isian teman",
     penjelasan:
       "Menghapus nama panggilan, jawaban, nomor WhatsApp, dan semua isian teman untuk hasil ini. Tidak bisa dibatalkan.",
-    tombol: "Hapus dataku",
     yakin: "Yakin mau menghapus semuanya?",
     konfirmasi: "Ya, hapus semuanya",
     batal: "Batal",

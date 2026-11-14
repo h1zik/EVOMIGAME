@@ -8,8 +8,9 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
  * - garis: pilihan kedua di atas latar berwarna.
  * - garis-biru: pilihan kedua di atas latar putih.
  * - shopee: hanya untuk tombol yang mengarah ke Shopee.
+ * - bahaya: konfirmasi tindakan yang tidak bisa dibatalkan, di atas latar putih.
  */
-export type GayaTombol = "putih" | "biru" | "garis" | "garis-biru" | "shopee";
+export type GayaTombol = "putih" | "biru" | "garis" | "garis-biru" | "shopee" | "bahaya";
 
 const BENTUK =
   "inline-flex w-full items-center justify-center gap-2 rounded-full text-center font-bold leading-tight " +
@@ -29,6 +30,7 @@ const GAYA: Record<GayaTombol, string> = {
   garis: "bg-transparent text-putih ring-2 ring-inset ring-putih",
   "garis-biru": "bg-putih text-biru ring-2 ring-inset ring-biru",
   shopee: "bg-shopee text-putih",
+  bahaya: "bg-bahaya text-putih",
 };
 
 export function kelasTombol(gaya: GayaTombol = "putih", tambahan = "", ukuran: UkuranTombol = "besar") {

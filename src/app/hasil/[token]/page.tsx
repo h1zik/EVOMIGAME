@@ -91,27 +91,27 @@ export default async function HalamanHasil({ params }: { params: Promise<{ token
         <TombolUnduh token={pemain.tokenRahasia} kode={pemain.kodePublik} />
       </div>
 
-      <TawaranWhatsapp token={pemain.tokenRahasia} sudahTersimpan={Boolean(pemain.noWhatsapp)} />
-
-      <div className="mt-3">
+      {/* Hal tambahan, satu baris tiap hal. Detailnya baru muncul kalau barisnya dibuka. */}
+      <section
+        aria-label={TEKS.hasil.labelLainnya}
+        className="di-atas-putih divide-y divide-biru-garis rounded-kartu border border-biru-garis bg-putih px-5 py-1.5 text-teks"
+      >
+        <TawaranWhatsapp token={pemain.tokenRahasia} sudahTersimpan={Boolean(pemain.noWhatsapp)} />
         <LinkHasil
           linkHasil={linkHasil}
           token={pemain.tokenRahasia}
           kode={pemain.kodePublik}
           nama={pemain.namaPanggilan}
         />
-      </div>
-
-      <p className="mx-auto mt-3 max-w-[20rem] text-center text-pretty">{TEKS.hasil.catatan}</p>
-
-      <div className="mt-6 border-t border-putih/30 pt-6">
         <HapusData token={pemain.tokenRahasia} />
-        <p className="mt-6 text-center">
-          <Link href="/privasi" className="inline-block min-h-11 px-3 py-2.5 font-semibold underline underline-offset-4">
-            {TEKS.kaki.privasi}
-          </Link>
-        </p>
-      </div>
+      </section>
+
+      <footer className="text-center text-sm">
+        <p className="mx-auto max-w-[20rem] text-pretty">{TEKS.hasil.catatan}</p>
+        <Link href="/privasi" className="inline-block min-h-11 px-3 py-2.5 font-semibold underline underline-offset-4">
+          {TEKS.kaki.privasi}
+        </Link>
+      </footer>
     </main>
   );
 }
