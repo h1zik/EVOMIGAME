@@ -158,7 +158,7 @@ const KARTU_DASAR: KartuSituasi[] = [
   },
   {
     id: "k12",
-    situasi: "Kamu salah kirim chat ke grup. Kamu...",
+    situasi: "Chat yang harusnya buat satu orang malah kekirim ke grup. Kamu...",
     pilihan: {
       PP: "Hapus, jelasin singkat, selesai",
       RB: "Ketawain diri sendiri di grup",
@@ -208,7 +208,7 @@ const KARTU_DASAR: KartuSituasi[] = [
   },
   {
     id: "k17",
-    situasi: "Kamu harus presentasi di depan banyak orang. Kamu...",
+    situasi: "Giliranmu presentasi di depan banyak orang. Kamu...",
     pilihan: {
       PP: "Latihan dulu, catat poin pentingnya",
       RB: "Maju pertama biar cepat beres",
@@ -250,7 +250,7 @@ const KARTU_DASAR: KartuSituasi[] = [
     id: "k21",
     situasi: "Temanmu ditegur keras di depan orang lain. Kamu...",
     pilihan: {
-      PP: "Tengahi, ajak bahas baik-baik",
+      PP: "Nengahin, ajak bahas baik-baik",
       RB: "Bela dia saat itu juga",
       PC: "Samperin dia setelahnya, temenin",
       SS: 'Kirim chat diam-diam, "kamu nggak apa-apa?"',
@@ -288,7 +288,7 @@ const KARTU_DASAR: KartuSituasi[] = [
   },
   {
     id: "k25",
-    situasi: "Kamu nemu kafe baru yang sepi dan enak. Kamu...",
+    situasi: "Nemu kafe baru yang sepi dan enak. Kamu...",
     pilihan: {
       PP: "Simpan buat tempat kerja atau belajar",
       RB: "Besok langsung ajak teman ke sana",
@@ -318,7 +318,7 @@ const KARTU_DASAR: KartuSituasi[] = [
   },
   {
     id: "k28",
-    situasi: "Kamu dapat hadiah yang sebenarnya kurang kamu suka. Kamu...",
+    situasi: "Dapat hadiah yang sebenarnya kurang kamu suka. Kamu...",
     pilihan: {
       PP: "Simpan, cari cara biar tetap kepakai",
       RB: "Jujur kalau ditanya, kurang cocok",
@@ -338,7 +338,7 @@ const KARTU_DASAR: KartuSituasi[] = [
   },
   {
     id: "k30",
-    situasi: "Kamu bebas pilih tempat duduk di sebuah acara. Kamu...",
+    situasi: "Datang ke acara, tempat duduknya bebas pilih. Kamu...",
     pilihan: {
       PP: "Tengah, yang paling jelas kelihatan",
       RB: "Paling depan",
@@ -358,11 +358,11 @@ const KARTU_DASAR: KartuSituasi[] = [
   },
   {
     id: "k32",
-    situasi: "Kamu punya ide, tapi beda dari yang lain. Kamu...",
+    situasi: "Punya ide, tapi beda sendiri dari yang lain. Kamu...",
     pilihan: {
-      PP: "Siapin alasannya dulu, baru sampaikan",
+      PP: "Siapin alasannya dulu, baru ngomong",
       RB: "Langsung bilang, beda juga nggak apa-apa",
-      PC: "Cari waktu yang pas buat nyampaikan",
+      PC: "Cari waktu yang pas buat ngomonginnya",
       SS: "Bisikin ke satu teman dulu",
     },
   },
@@ -378,7 +378,7 @@ const KARTU_DASAR: KartuSituasi[] = [
   },
   {
     id: "k34",
-    situasi: "Kamu ditunjuk jadi ketua tanpa ditanya dulu. Kamu...",
+    situasi: "Tiba-tiba ditunjuk jadi ketua, nggak ditanya dulu. Kamu...",
     pilihan: {
       PP: "Terima, langsung susun langkahnya",
       RB: "Protes dulu, kok nggak ditanya",
@@ -398,7 +398,7 @@ const KARTU_DASAR: KartuSituasi[] = [
   },
   {
     id: "k36",
-    situasi: "Kamu ketemu orang yang kamu kagumi. Kamu...",
+    situasi: "Ketemu langsung sama orang yang kamu kagumi. Kamu...",
     pilihan: {
       PP: "Sapa sopan, bilang apa yang kamu suka dari karyanya",
       RB: "Samperin, minta foto",
@@ -432,7 +432,7 @@ const KARTU_DASAR: KartuSituasi[] = [
     pilihan: {
       PP: "Foto, hubungi penjual, minta tukar",
       RB: "Balik ke tokonya hari itu juga",
-      PC: "Kalau masih bisa dipakai, ya sudah",
+      PC: "Kalau masih bisa dipakai, ya udah",
       SS: "Bingung mau bilang, minta tolong teman",
     },
   },
@@ -440,7 +440,7 @@ const KARTU_DASAR: KartuSituasi[] = [
     id: "k40",
     situasi: "Malam minggu tanpa acara. Kamu...",
     pilihan: {
-      PP: "Rapikan kamar, siapin minggu depan",
+      PP: "Beresin kamar, siapin buat minggu depan",
       RB: "Cari acara dadakan",
       PC: "Film, selimut, selesai",
       SS: "Video call sama orang yang dikangenin",
